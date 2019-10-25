@@ -19,7 +19,7 @@ namespace Taller1.Filters
 
 		public override void OnActionExecuting(ActionExecutingContext context)
 		{
-			var authenticated = context.HttpContext.Session.GetString("Autenticated");
+			var authenticated = context.HttpContext.Session.GetString("Valid");
 
 			if (string.IsNullOrEmpty(authenticated))
 			{

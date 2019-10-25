@@ -9,6 +9,7 @@ using Taller1.Models;
 
 namespace Taller1.Controllers
 {
+	[CustomExceptionFilter]
 	public class CustomerController : Controller
 	{
 		// GET: Customer
@@ -33,17 +34,11 @@ namespace Taller1.Controllers
 		// POST: Customer/Create
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		[CustomExceptionFilter]
 		public ActionResult Create(Customer model)
 		{
 			if (ModelState.IsValid)
 			{
-				if (model.FirstName.Equals("Mao"))
-				{
-					throw new ApplicationException("Datos no  validos");
-				}
-
-				return RedirectToAction(nameof(Index));
+				return RedirectToAction("Index");
 			}
 			else
 			{

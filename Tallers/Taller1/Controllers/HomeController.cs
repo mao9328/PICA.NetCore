@@ -5,10 +5,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Taller1.Filters;
 using Taller1.Models;
 
 namespace Taller1.Controllers
 {
+	[CustomExceptionFilter]
 	public class HomeController : Controller
 	{
 
@@ -22,7 +24,13 @@ namespace Taller1.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				HttpContext.Session.SetString("Autenticated", "True");
+
+				if (model.UserName.Equals("AlvaroUribe"))
+				{
+					throw new ApplicationException("Lo sentimos, no admitimos paracos.");
+				}
+
+				HttpContext.Session.SetString("Valid", "3132132");
 
 				return RedirectToAction("Create", "Customer");
 			}
@@ -58,9 +66,9 @@ namespace Taller1.Controllers
 		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-		public IActionResult Error()
+		public IActionResult Error(string error)
 		{
-			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+			return View(new ErrorViewModel { Message = error });
 		}
 	}
 }

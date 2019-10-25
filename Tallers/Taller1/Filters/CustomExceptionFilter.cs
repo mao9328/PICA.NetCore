@@ -14,7 +14,7 @@ namespace Taller1.Filters
 		{
 
 			context.Result = new RedirectToRouteResult(
-					new RouteValueDictionary(new { controller = "Home", action = "Error" })
+					new RouteValueDictionary(new { controller = "Home", action = "Error", error = context.Exception.Message })
 				);
 		}
 	}

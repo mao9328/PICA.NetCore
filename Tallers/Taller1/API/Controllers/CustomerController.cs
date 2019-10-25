@@ -9,6 +9,7 @@ using Taller1.Models;
 namespace Taller1.API.Controllers
 {
 	[Route("api/[controller]")]
+	[Produces("application/json", "text/xml")]
 	[ApiController]
 	[FormatFilter]
 	public class CustomerController : ControllerBase
