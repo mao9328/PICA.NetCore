@@ -32,12 +32,13 @@ namespace Taller1
 				options.MinimumSameSitePolicy = SameSiteMode.None;
 			});
 
+
 			services.AddMvc(options =>
 			{
 				options.RespectBrowserAcceptHeader = true;
 				options.InputFormatters.Add(new XmlSerializerInputFormatter());
 				options.OutputFormatters.Add(new XmlSerializerOutputFormatter());
-			}).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+			}).SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddXmlSerializerFormatters();
 
 
 			services.AddSession();

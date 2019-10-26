@@ -24,7 +24,6 @@ namespace Taller1.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-
 				if (model.UserName.Equals("AlvaroUribe"))
 				{
 					throw new ApplicationException("Lo sentimos, no admitimos paracos.");
